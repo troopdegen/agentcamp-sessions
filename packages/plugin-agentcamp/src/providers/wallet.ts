@@ -32,7 +32,7 @@ import type { SupportedChain } from "../types";
 export class WalletProvider {
     private cache: NodeCache;
     private cacheKey: string = "evm/wallet";
-    private currentChain: SupportedChain = "mainnet";
+    private currentChain: SupportedChain = "polygonAmoy";
     private CACHE_EXPIRY_SEC = 5;
     chains: Record<string, Chain> = { ...viemChains };
     account: PrivateKeyAccount;
@@ -265,13 +265,13 @@ const genChainsFromRuntime = (
         chains[chainName] = chain;
     });
 
-    const mainnet_rpcurl = runtime.getSetting("EVM_PROVIDER_URL");
-    if (mainnet_rpcurl) {
+    const polygonAmoy_rpcurl = runtime.getSetting("EVM_PROVIDER_URL");
+    if (polygonAmoy_rpcurl) {
         const chain = WalletProvider.genChainFromName(
-            "mainnet",
-            mainnet_rpcurl
+            "polygonAmoy",
+            polygonAmoy_rpcurl
         );
-        chains["mainnet"] = chain;
+        chains["polygonAmoy"] = chain;
     }
 
     return chains;
